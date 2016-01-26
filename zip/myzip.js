@@ -81,6 +81,32 @@
                 li.appendChild(unzipProgress);
             });
         }
+        function showNode(entry,li,a){
+
+              entry.getData(new zip.TextWriter(), function(text) {
+                        if(text.indexOf("Mac OS X") >= 0||entry.filename.indexOf(".jpeg")>=0){
+                            return;
+                        }
+                        var doc = new DOMParser({
+                            locator:{},
+                            errorHandler:{
+                                warning:function(w){
+                                    console.warn(w);
+                                },
+                                error:function(error){
+                                     console.log(entry.filename);
+                                },
+                                fatalError:function(fatalError){
+
+                                }}
+                        }).parseFromString(text,'text/xml');
+
+                        parseXml2Tree(doc);
+                        doclist.push(doc);
+                    }, function(current, total) {
+                        // onprogress callback
+                    });
+        }
 
         if (typeof requestFileSystem == "undefined")
             creationMethodInput.options.length = 1;
@@ -92,45 +118,7 @@
                 entries.forEach(function(entry) {
 
                     // get first entry content as text
-                    entry.getData(new zip.TextWriter(), function(text) {
-                        // text contains the entry data as a String
-                        if(text.indexOf("Mac OS X") >= 0||entry.filename.indexOf(".jpeg")>=0){
-                            return;
-                        }
-                       // console.log(text);
-                        var doc = new DOMParser({
-                            /**
-                             * locator is always need for error position info
-                             */
-                            locator:{},
-                            /**
-                             * you can override the errorHandler for xml parser
-                             * @link http://www.saxproject.org/apidoc/org/xml/sax/ErrorHandler.html
-                             */
-                            errorHandler:{
-                                warning:function(w){
-                                    console.warn(w);
-                                },
-                                error:function(error){
-                                     console.log(entry.filename);
-                                    //console.log(error);
-                                },
-                                fatalError:function(fatalError){
-
-                                }}
-                            //only callback model
-                            //errorHandler:function(level,msg){console.log(level,msg)}
-                        }).parseFromString(text,'text/xml');
-                        
-                        doclist.push(doc);
-                        // close the zip reader
-                       // reader.close(function() {
-                            // onclose callback
-                      //  });
-
-                    }, function(current, total) {
-                        // onprogress callback
-                    });
+                  
 
                     var li = document.createElement("li");
                     var a = document.createElement("a");
@@ -138,7 +126,8 @@
                     a.href = "#";
                     a.addEventListener("click", function(event) {
                         if (!a.download) {
-                            download(entry, li, a);
+                            //download(entry, li, a);
+                            showNode(entry,li,a);
                             event.preventDefault();
                             return false;
                         }
