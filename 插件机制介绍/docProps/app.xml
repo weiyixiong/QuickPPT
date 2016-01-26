@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Properties
+    xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties"
+    xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+    <Template>Slice</Template>
+    <TotalTime>1041</TotalTime>
+    <Words>698</Words>
+    <Application>Microsoft Office PowerPoint</Application>
+    <PresentationFormat>宽屏</PresentationFormat>
+    <Paragraphs>134</Paragraphs>
+    <Slides>24</Slides>
+    <Notes>0</Notes>
+    <HiddenSlides>0</HiddenSlides>
+    <MMClips>0</MMClips>
+    <ScaleCrop>false</ScaleCrop>
+    <HeadingPairs>
+        <vt:vector size="6" baseType="variant">
+            <vt:variant>
+                <vt:lpstr>已用的字体</vt:lpstr>
+            </vt:variant>
+            <vt:variant>
+                <vt:i4>3</vt:i4>
+            </vt:variant>
+            <vt:variant>
+                <vt:lpstr>主题</vt:lpstr>
+            </vt:variant>
+            <vt:variant>
+                <vt:i4>1</vt:i4>
+            </vt:variant>
+            <vt:variant>
+                <vt:lpstr>幻灯片标题</vt:lpstr>
+            </vt:variant>
+            <vt:variant>
+                <vt:i4>24</vt:i4>
+            </vt:variant>
+        </vt:vector>
+    </HeadingPairs>
+    <TitlesOfParts>
+        <vt:vector size="28" baseType="lpstr">
+            <vt:lpstr>幼圆</vt:lpstr>
+            <vt:lpstr>Century Gothic</vt:lpstr>
+            <vt:lpstr>Wingdings 3</vt:lpstr>
+            <vt:lpstr>切片</vt:lpstr>
+            <vt:lpstr>新插件机制— Droid Plugin</vt:lpstr>
+            <vt:lpstr>一、Droid Plugin是什么</vt:lpstr>
+            <vt:lpstr>一、Droid Plugin是什么</vt:lpstr>
+            <vt:lpstr>一、Droid Plugin是什么</vt:lpstr>
+            <vt:lpstr>二、插件不能做什么？</vt:lpstr>
+            <vt:lpstr>三、插件特点</vt:lpstr>
+            <vt:lpstr>四、基本架构</vt:lpstr>
+            <vt:lpstr>五、插件host程序架构</vt:lpstr>
+            <vt:lpstr>六、基本原理</vt:lpstr>
+            <vt:lpstr>6.1、进程共享</vt:lpstr>
+            <vt:lpstr>6.1、进程共享</vt:lpstr>
+            <vt:lpstr>6.2、HOOK（API欺骗）之动态代理</vt:lpstr>
+            <vt:lpstr>6.3、HOOK （API欺骗）之BINDER代理</vt:lpstr>
+            <vt:lpstr>6.4、HOOK （API欺骗）之INSTRUMENTATION欺骗</vt:lpstr>
+            <vt:lpstr>七、解决四大组件注册问题</vt:lpstr>
+            <vt:lpstr>7.1、占坑</vt:lpstr>
+            <vt:lpstr>7.2、占坑----解决ACTIVITY注册问题</vt:lpstr>
+            <vt:lpstr>7.3、占坑----解决Content PROVIDER注册</vt:lpstr>
+            <vt:lpstr>7.4、占坑----解决SERVICE注册</vt:lpstr>
+            <vt:lpstr>7.5、预先注册----解决广播注册问题</vt:lpstr>
+            <vt:lpstr>八、自己实现包管理服务（PMS）</vt:lpstr>
+            <vt:lpstr>九、自己实现ACTIVITY管理（进程管理）服务（AMS）</vt:lpstr>
+            <vt:lpstr>十、适配</vt:lpstr>
+            <vt:lpstr>谢谢</vt:lpstr>
+        </vt:vector>
+    </TitlesOfParts>
+    <Company>Microsoft</Company>
+    <LinksUpToDate>false</LinksUpToDate>
+    <SharedDoc>false</SharedDoc>
+    <HyperlinksChanged>false</HyperlinksChanged>
+    <AppVersion>15.0000</AppVersion>
+</Properties>

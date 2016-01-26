@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:sldLayout preserve="1" type="titleOnly" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+	<p:cSld name="仅标题">
+		<p:spTree>
+			<p:nvGrpSpPr>
+				<p:cNvPr id="1" name=""/>
+				<p:cNvGrpSpPr/>
+				<p:nvPr/>
+			</p:nvGrpSpPr>
+			<p:grpSpPr>
+				<a:xfrm>
+					<a:off x="0" y="0"/>
+					<a:ext cx="0" cy="0"/>
+					<a:chOff x="0" y="0"/>
+					<a:chExt cx="0" cy="0"/>
+				</a:xfrm>
+			</p:grpSpPr>
+			<p:sp>
+				<p:nvSpPr>
+					<p:cNvPr id="2" name="Title 1"/>
+					<p:cNvSpPr>
+						<a:spLocks noGrp="1"/>
+					</p:cNvSpPr>
+					<p:nvPr>
+						<p:ph type="title"/>
+					</p:nvPr>
+				</p:nvSpPr>
+				<p:spPr/>
+				<p:txBody>
+					<a:bodyPr/>
+					<a:lstStyle/>
+					<a:p>
+						<a:r>
+							<a:rPr altLang="en-US" lang="zh-CN" smtClean="0"/>
+							<a:t>单击此处编辑母版标题样式</a:t>
+						</a:r>
+						<a:endParaRPr dirty="0" lang="en-US"/>
+					</a:p>
+				</p:txBody>
+			</p:sp>
+			<p:sp>
+				<p:nvSpPr>
+					<p:cNvPr id="3" name="Date Placeholder 2"/>
+					<p:cNvSpPr>
+						<a:spLocks noGrp="1"/>
+					</p:cNvSpPr>
+					<p:nvPr>
+						<p:ph idx="10" sz="half" type="dt"/>
+					</p:nvPr>
+				</p:nvSpPr>
+				<p:spPr/>
+				<p:txBody>
+					<a:bodyPr/>
+					<a:lstStyle/>
+					<a:p>
+						<a:fld id="{B61BEF0D-F0BB-DE4B-95CE-6DB70DBA9567}" type="datetimeFigureOut">
+							<a:rPr dirty="0" lang="en-US"/>
+							<a:pPr/>
+							<a:t>8/24/2015</a:t>
+						</a:fld>
+						<a:endParaRPr dirty="0" lang="en-US"/>
+					</a:p>
+				</p:txBody>
+			</p:sp>
+			<p:sp>
+				<p:nvSpPr>
+					<p:cNvPr id="4" name="Footer Placeholder 3"/>
+					<p:cNvSpPr>
+						<a:spLocks noGrp="1"/>
+					</p:cNvSpPr>
+					<p:nvPr>
+						<p:ph idx="11" sz="quarter" type="ftr"/>
+					</p:nvPr>
+				</p:nvSpPr>
+				<p:spPr/>
+				<p:txBody>
+					<a:bodyPr/>
+					<a:lstStyle/>
+					<a:p>
+						<a:endParaRPr dirty="0" lang="en-US"/>
+					</a:p>
+				</p:txBody>
+			</p:sp>
+			<p:sp>
+				<p:nvSpPr>
+					<p:cNvPr id="5" name="Slide Number Placeholder 4"/>
+					<p:cNvSpPr>
+						<a:spLocks noGrp="1"/>
+					</p:cNvSpPr>
+					<p:nvPr>
+						<p:ph idx="12" sz="quarter" type="sldNum"/>
+					</p:nvPr>
+				</p:nvSpPr>
+				<p:spPr/>
+				<p:txBody>
+					<a:bodyPr/>
+					<a:lstStyle/>
+					<a:p>
+						<a:fld id="{D57F1E4F-1CFF-5643-939E-217C01CDF565}" type="slidenum">
+							<a:rPr dirty="0" lang="en-US"/>
+							<a:pPr/>
+							<a:t>‹#›</a:t>
+						</a:fld>
+						<a:endParaRPr dirty="0" lang="en-US"/>
+					</a:p>
+				</p:txBody>
+			</p:sp>
+		</p:spTree>
+	</p:cSld>
+	<p:clrMapOvr>
+		<a:masterClrMapping/>
+	</p:clrMapOvr>
+</p:sldLayout>

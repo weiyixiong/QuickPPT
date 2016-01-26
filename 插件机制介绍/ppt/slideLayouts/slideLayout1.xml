@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:sldLayout preserve="1" showMasterSp="0" type="title" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+	<p:cSld name="标题幻灯片">
+		<p:spTree>
+			<p:nvGrpSpPr>
+				<p:cNvPr id="1" name=""/>
+				<p:cNvGrpSpPr/>
+				<p:nvPr/>
+			</p:nvGrpSpPr>
+			<p:grpSpPr>
+				<a:xfrm>
+					<a:off x="0" y="0"/>
+					<a:ext cx="0" cy="0"/>
+					<a:chOff x="0" y="0"/>
+					<a:chExt cx="0" cy="0"/>
+				</a:xfrm>
+			</p:grpSpPr>
+			<p:sp>
+				<p:nvSpPr>
+					<p:cNvPr id="2" name="Title 1"/>
+					<p:cNvSpPr>
+						<a:spLocks noGrp="1"/>
+					</p:cNvSpPr>
+					<p:nvPr>
+						<p:ph type="ctrTitle"/>
+					</p:nvPr>
+				</p:nvSpPr>
+				<p:spPr>
+					<a:xfrm>
+						<a:off x="684212" y="685799"/>
+						<a:ext cx="8001000" cy="2971801"/>
+					</a:xfrm>
+				</p:spPr>
+				<p:txBody>
+					<a:bodyPr anchor="b">
+						<a:normAutofit/>
+					</a:bodyPr>
+					<a:lstStyle>
+						<a:lvl1pPr algn="l">
+							<a:defRPr sz="4800">
+								<a:effectLst/>
+							</a:defRPr>
+						</a:lvl1pPr>
+					</a:lstStyle>
+					<a:p>
+						<a:r>
+							<a:rPr altLang="en-US" lang="zh-CN" smtClean="0"/>
+							<a:t>单击此处编辑母版标题样式</a:t>
+						</a:r>
+						<a:endParaRPr dirty="0" lang="en-US"/>
+					</a:p>
+				</p:txBody>
+			</p:sp>
+			<p:sp>
+				<p:nvSpPr>
+					<p:cNvPr id="3" name="Subtitle 2"/>
+					<p:cNvSpPr>
+						<a:spLocks noGrp="1"/>
+					</p:cNvSpPr>
+					<p:nvPr>
+						<p:ph idx="1" type="subTitle"/>
+					</p:nvPr>
+				</p:nvSpPr>
+				<p:spPr>
+					<a:xfrm>
+						<a:off x="684212" y="3843867"/>
+						<a:ext cx="6400800" cy="1947333"/>
+					</a:xfrm>
+				</p:spPr>
+				<p:txBody>
+					<a:bodyPr anchor="t">
+						<a:normAutofit/>
+					</a:bodyPr>
+					<a:lstStyle>
+						<a:lvl1pPr algn="l" indent="0" marL="0">
+							<a:buNone/>
+							<a:defRPr sz="2100">
+								<a:solidFill>
+									<a:schemeClr val="bg2">
+										<a:lumMod val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl1pPr>
+						<a:lvl2pPr algn="ctr" indent="0" marL="457200">
+							<a:buNone/>
+							<a:defRPr>
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl2pPr>
+						<a:lvl3pPr algn="ctr" indent="0" marL="914400">
+							<a:buNone/>
+							<a:defRPr>
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl3pPr>
+						<a:lvl4pPr algn="ctr" indent="0" marL="1371600">
+							<a:buNone/>
+							<a:defRPr>
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl4pPr>
+						<a:lvl5pPr algn="ctr" indent="0" marL="1828800">
+							<a:buNone/>
+							<a:defRPr>
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl5pPr>
+						<a:lvl6pPr algn="ctr" indent="0" marL="2286000">
+							<a:buNone/>
+							<a:defRPr>
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl6pPr>
+						<a:lvl7pPr algn="ctr" indent="0" marL="2743200">
+							<a:buNone/>
+							<a:defRPr>
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl7pPr>
+						<a:lvl8pPr algn="ctr" indent="0" marL="3200400">
+							<a:buNone/>
+							<a:defRPr>
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl8pPr>
+						<a:lvl9pPr algn="ctr" indent="0" marL="3657600">
+							<a:buNone/>
+							<a:defRPr>
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl9pPr>
+					</a:lstStyle>
+					<a:p>
+						<a:r>
+							<a:rPr altLang="en-US" lang="zh-CN" smtClean="0"/>
+							<a:t>单击此处编辑母版副标题样式</a:t>
+						</a:r>
+						<a:endParaRPr dirty="0" lang="en-US"/>
+					</a:p>
+				</p:txBody>
+			</p:sp>
+			<p:sp>
+				<p:nvSpPr>
+					<p:cNvPr id="4" name="Date Placeholder 3"/>
+					<p:cNvSpPr>
+						<a:spLocks noGrp="1"/>
+					</p:cNvSpPr>
+					<p:nvPr>
+						<p:ph idx="10" sz="half" type="dt"/>
+					</p:nvPr>
+				</p:nvSpPr>
+				<p:spPr/>
+				<p:txBody>
+					<a:bodyPr/>
+					<a:lstStyle/>
+					<a:p>
+						<a:fld id="{B61BEF0D-F0BB-DE4B-95CE-6DB70DBA9567}" type="datetimeFigureOut">
+							<a:rPr dirty="0" lang="en-US"/>
+							<a:pPr/>
+							<a:t>8/24/2015</a:t>
+						</a:fld>
+						<a:endParaRPr dirty="0" lang="en-US"/>
+					</a:p>
+				</p:txBody>
+			</p:sp>
+			<p:sp>
+				<p:nvSpPr>
+					<p:cNvPr id="5" name="Footer Placeholder 4"/>
+					<p:cNvSpPr>
+						<a:spLocks noGrp="1"/>
+					</p:cNvSpPr>
+					<p:nvPr>
+						<p:ph idx="11" sz="quarter" type="ftr"/>
+					</p:nvPr>
+				</p:nvSpPr>
+				<p:spPr/>
+				<p:txBody>
+					<a:bodyPr/>
+					<a:lstStyle/>
+					<a:p>
+						<a:endParaRPr dirty="0" lang="en-US"/>
+					</a:p>
+				</p:txBody>
+			</p:sp>
+			<p:sp>
+				<p:nvSpPr>
+					<p:cNvPr id="6" name="Slide Number Placeholder 5"/>
+					<p:cNvSpPr>
+						<a:spLocks noGrp="1"/>
+					</p:cNvSpPr>
+					<p:nvPr>
+						<p:ph idx="12" sz="quarter" type="sldNum"/>
+					</p:nvPr>
+				</p:nvSpPr>
+				<p:spPr/>
+				<p:txBody>
+					<a:bodyPr/>
+					<a:lstStyle/>
+					<a:p>
+						<a:fld id="{D57F1E4F-1CFF-5643-939E-217C01CDF565}" type="slidenum">
+							<a:rPr dirty="0" lang="en-US"/>
+							<a:pPr/>
+							<a:t>‹#›</a:t>
+						</a:fld>
+						<a:endParaRPr dirty="0" lang="en-US"/>
+					</a:p>
+				</p:txBody>
+			</p:sp>
+			<p:cxnSp>
+				<p:nvCxnSpPr>
+					<p:cNvPr id="16" name="Straight Connector 15"/>
+					<p:cNvCxnSpPr/>
+					<p:nvPr/>
+				</p:nvCxnSpPr>
+				<p:spPr>
+					<a:xfrm flipH="1">
+						<a:off x="8228012" y="8467"/>
+						<a:ext cx="3810000" cy="3810000"/>
+					</a:xfrm>
+					<a:prstGeom prst="line">
+						<a:avLst/>
+					</a:prstGeom>
+					<a:ln w="12700">
+						<a:solidFill>
+							<a:schemeClr val="tx1"/>
+						</a:solidFill>
+					</a:ln>
+				</p:spPr>
+				<p:style>
+					<a:lnRef idx="2">
+						<a:schemeClr val="accent1"/>
+					</a:lnRef>
+					<a:fillRef idx="0">
+						<a:schemeClr val="accent1"/>
+					</a:fillRef>
+					<a:effectRef idx="1">
+						<a:schemeClr val="accent1"/>
+					</a:effectRef>
+					<a:fontRef idx="minor">
+						<a:schemeClr val="tx1"/>
+					</a:fontRef>
+				</p:style>
+			</p:cxnSp>
+			<p:cxnSp>
+				<p:nvCxnSpPr>
+					<p:cNvPr id="17" name="Straight Connector 16"/>
+					<p:cNvCxnSpPr/>
+					<p:nvPr/>
+				</p:nvCxnSpPr>
+				<p:spPr>
+					<a:xfrm flipH="1">
+						<a:off x="6108170" y="91545"/>
+						<a:ext cx="6080655" cy="6080655"/>
+					</a:xfrm>
+					<a:prstGeom prst="line">
+						<a:avLst/>
+					</a:prstGeom>
+					<a:ln w="12700">
+						<a:solidFill>
+							<a:schemeClr val="tx1"/>
+						</a:solidFill>
+					</a:ln>
+				</p:spPr>
+				<p:style>
+					<a:lnRef idx="2">
+						<a:schemeClr val="accent1"/>
+					</a:lnRef>
+					<a:fillRef idx="0">
+						<a:schemeClr val="accent1"/>
+					</a:fillRef>
+					<a:effectRef idx="1">
+						<a:schemeClr val="accent1"/>
+					</a:effectRef>
+					<a:fontRef idx="minor">
+						<a:schemeClr val="tx1"/>
+					</a:fontRef>
+				</p:style>
+			</p:cxnSp>
+			<p:cxnSp>
+				<p:nvCxnSpPr>
+					<p:cNvPr id="19" name="Straight Connector 18"/>
+					<p:cNvCxnSpPr/>
+					<p:nvPr/>
+				</p:nvCxnSpPr>
+				<p:spPr>
+					<a:xfrm flipH="1">
+						<a:off x="7235825" y="228600"/>
+						<a:ext cx="4953000" cy="4953000"/>
+					</a:xfrm>
+					<a:prstGeom prst="line">
+						<a:avLst/>
+					</a:prstGeom>
+					<a:ln w="12700">
+						<a:solidFill>
+							<a:schemeClr val="tx1"/>
+						</a:solidFill>
+					</a:ln>
+				</p:spPr>
+				<p:style>
+					<a:lnRef idx="2">
+						<a:schemeClr val="accent1"/>
+					</a:lnRef>
+					<a:fillRef idx="0">
+						<a:schemeClr val="accent1"/>
+					</a:fillRef>
+					<a:effectRef idx="1">
+						<a:schemeClr val="accent1"/>
+					</a:effectRef>
+					<a:fontRef idx="minor">
+						<a:schemeClr val="tx1"/>
+					</a:fontRef>
+				</p:style>
+			</p:cxnSp>
+			<p:cxnSp>
+				<p:nvCxnSpPr>
+					<p:cNvPr id="21" name="Straight Connector 20"/>
+					<p:cNvCxnSpPr/>
+					<p:nvPr/>
+				</p:nvCxnSpPr>
+				<p:spPr>
+					<a:xfrm flipH="1">
+						<a:off x="7335837" y="32278"/>
+						<a:ext cx="4852989" cy="4852989"/>
+					</a:xfrm>
+					<a:prstGeom prst="line">
+						<a:avLst/>
+					</a:prstGeom>
+					<a:ln w="31750">
+						<a:solidFill>
+							<a:schemeClr val="tx1"/>
+						</a:solidFill>
+					</a:ln>
+				</p:spPr>
+				<p:style>
+					<a:lnRef idx="2">
+						<a:schemeClr val="accent1"/>
+					</a:lnRef>
+					<a:fillRef idx="0">
+						<a:schemeClr val="accent1"/>
+					</a:fillRef>
+					<a:effectRef idx="1">
+						<a:schemeClr val="accent1"/>
+					</a:effectRef>
+					<a:fontRef idx="minor">
+						<a:schemeClr val="tx1"/>
+					</a:fontRef>
+				</p:style>
+			</p:cxnSp>
+			<p:cxnSp>
+				<p:nvCxnSpPr>
+					<p:cNvPr id="23" name="Straight Connector 22"/>
+					<p:cNvCxnSpPr/>
+					<p:nvPr/>
+				</p:nvCxnSpPr>
+				<p:spPr>
+					<a:xfrm flipH="1">
+						<a:off x="7845426" y="609601"/>
+						<a:ext cx="4343399" cy="4343399"/>
+					</a:xfrm>
+					<a:prstGeom prst="line">
+						<a:avLst/>
+					</a:prstGeom>
+					<a:ln w="31750">
+						<a:solidFill>
+							<a:schemeClr val="tx1"/>
+						</a:solidFill>
+					</a:ln>
+				</p:spPr>
+				<p:style>
+					<a:lnRef idx="2">
+						<a:schemeClr val="accent1"/>
+					</a:lnRef>
+					<a:fillRef idx="0">
+						<a:schemeClr val="accent1"/>
+					</a:fillRef>
+					<a:effectRef idx="1">
+						<a:schemeClr val="accent1"/>
+					</a:effectRef>
+					<a:fontRef idx="minor">
+						<a:schemeClr val="tx1"/>
+					</a:fontRef>
+				</p:style>
+			</p:cxnSp>
+		</p:spTree>
+	</p:cSld>
+	<p:clrMapOvr>
+		<a:masterClrMapping/>
+	</p:clrMapOvr>
+</p:sldLayout>
