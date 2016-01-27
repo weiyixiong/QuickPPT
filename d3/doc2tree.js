@@ -10,11 +10,13 @@ function parseXml2Json(doc){
 }
 function parseXml2Object(doc){
 	if (doc.childNodes==null) {
-		return;
+		return new DocStruct(doc.nodeValue);
 	};
 	var res=new DocStruct(doc.tagName);
 	for (var i = doc.childNodes.length - 1; i >= 0; i--) {
-		res.children.push(parseXml2Objec(doc.childNodes[i]));
+		if (doc.childNodes[i]!=null){
+		  res.children.push(parseXml2Object(doc.childNodes[i]));	
+		}
 	};
 	return res;
 }
