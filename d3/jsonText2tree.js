@@ -1,6 +1,7 @@
-function(json){
+function buildTree(json,Data){
     var myjson = '{"name": "flare","children": [{"name": "analytics","children": [{"name": "cluster","children": [{"name": "MergeEdge", "size": 10 }]}]}]}'; 
-    treeData=JSON.parse(json);
+    //treeData=JSON.parse(json);
+    treeData=Data;
     // Calculate total nodes, max label length
     var totalNodes = 0;
     var maxLabelLength = 0;

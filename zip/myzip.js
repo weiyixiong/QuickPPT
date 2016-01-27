@@ -100,8 +100,9 @@
 
                                 }}
                         }).parseFromString(text,'text/xml');
-
-                        parseXml2Tree(doc);
+                        doc.tagName="root";
+                        var json=parseXml2Object(doc);
+                        buildTree(null,json);
                         doclist.push(doc);
                     }, function(current, total) {
                         // onprogress callback
