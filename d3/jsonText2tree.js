@@ -18,7 +18,7 @@ function buildTree(json,Data){
 
     // size of the diagram
     var viewerWidth = $(document).width();
-    var viewerHeight = $(document).height();
+    var viewerHeight = window.screen.height//$(document).height();
 
     var tree = d3.layout.tree()
         .size([viewerHeight, viewerWidth]);

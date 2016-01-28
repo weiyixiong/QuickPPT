@@ -83,6 +83,7 @@
         }
         function showNode(entry,li,a){
 
+              d3.select("svg").remove();
               entry.getData(new zip.TextWriter(), function(text) {
                         if(text.indexOf("Mac OS X") >= 0||entry.filename.indexOf(".jpeg")>=0){
                             return;
