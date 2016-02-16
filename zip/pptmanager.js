@@ -1,6 +1,7 @@
 (function(obj) {
 
     var doclist=new Array();
+    var pptModel=new PPTModel();
 
     var requestFileSystem = obj.webkitRequestFileSystem || obj.mozRequestFileSystem || obj.requestFileSystem;
 
@@ -120,7 +121,7 @@
                 entries.forEach(function(entry) {
 
                     // get first entry content as text
-                  
+                    pptModel.pushData(entry);
 
                     var li = document.createElement("li");
                     var a = document.createElement("a");
