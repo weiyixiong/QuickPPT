@@ -1,5 +1,6 @@
 function PPTModel(){
     this.presentation=new Map();
+    this.sldmasteridlst=new Map();
 
 
     this.parser = new DOMParser({
@@ -27,22 +28,41 @@ PPTModel.prototype.parseXml=function parseXml(entry,callback){
                         // onprogress callback
                     });
 }
+PPTModel.prototype.addSldmasteridlst=function addSldmasteridlst(lst){
+
+    var sldmasterid= lst; 
+    for (var i = sldmasterid.length - 1; i >= 0; i--) {
+      //  if (sldmasterid[i]!=null){
+            var id=sldmasterid.item(i).getAttribute("id");
+            var target=sldmasterid.item(i).getAttribute("r:id");
+            this.sldmasteridlst.put(id,target);
+            console.log(id);
+            console.log(target);
+      //  }
+    }
+
+}
 PPTModel.prototype.pushData=function pushData(entry){
+    var _this=this;
     if(entry.filename.indexOf("ppt/presentation.xml")>=0){
          this.parseXml(entry,function(doc){
             var root=doc.childNodes[0];
-            var sldmasteridlst=doc.getElementsByTagName("p:sldmasteridlst");
-            var sldidlst=doc.getElementsByTagName("p:sldidlst");
-            var slidesz=doc.getElementsByTagName("p:sldsz");
-            var notessz=doc.getElementsByTagName("p:notessz");
-            var defaulttextstyle=doc.getElementsByTagName("p:defaulttextstyle");
-            var extlst=doc.getElementsByTagName("p:extlst");
+            var sldmasteridlst=doc.documentElement.getElementsByTagName('sldMasterId');
+            var sldidlst=root.getElementsByTagName("sldId");
+            var slidesz=root.getElementsByTagName("sldsz");
+            var notessz=root.getElementsByTagName("notessz");
+            var defaulttextstyle=root.getElementsByTagName("defaulttextstyle");
+            var extlst=root.getElementsByTagName("extlst");
+
+            _this.addSldmasteridlst(sldmasteridlst);
+
+
          });
     }
     else if(entry.filename.indexOf("ppt/_rels/presentation.xml.rels")>=0){
+         var pres=this.presentation;
          this.parseXml(entry,function(doc){
             var relations= doc.childNodes[0].childNodes;
-            var pres=this.presentation;
             for (var i = relations.length - 1; i >= 0; i--) {
                 if (relations[i]!=null){
                     var id=relations[i].getAttribute("Id");
@@ -67,7 +87,7 @@ PPTModel.prototype.pushData=function pushData(entry){
     else if(entry.filename.indexOf("ppt/slideMasters/_rels/")>=0){
          this.parseXml(entry);
     }
-    else if(entry.filename.indexOf("ppt/slideLayouts/slideLayout.xml")>=0){
+    else if(entry.filename.indexOf("ppt/slideLayouts/slideLayout")>=0){
          this.parseXml(entry);
     }
     else if(entry.filename.indexOf("ppt/slideLayouts/_rels")>=0){
