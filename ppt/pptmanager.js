@@ -137,8 +137,10 @@
                     }, false);
                     li.appendChild(a);
                     fileList.appendChild(li);
+
                 });
                 pptRender=new PPTRender(pptModel);
+                pptRender.render();
             });
         }, false);
     })();

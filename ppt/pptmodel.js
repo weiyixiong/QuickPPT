@@ -1,6 +1,11 @@
 function PPTModel(){
     this.presentation=new Map();
+    this.presentationRel=new Map();
     this.sldmasteridlst=new Map();
+    this.sldidlst=new Map();
+    this.sldszX=0;
+    this.sldszY=0;
+    this.sizeRate=0.0;
 
 
     this.parser = new DOMParser({
@@ -19,6 +24,11 @@ function PPTModel(){
 
 
 }
+PPTModel.prototype.setPPTsize=function setPPTsize(slidesz){
+       this.sldszX=slidesz.getAttribute("cx");
+       this.sldszY=slidesz.getAttribute("cy");
+       this.sizeRate=sldszX/window.screen.width;
+}
 PPTModel.prototype.parseXml=function parseXml(entry,callback){
         var parser=this.parser;
         entry.getData(new zip.TextWriter(), function(text) {
@@ -28,17 +38,22 @@ PPTModel.prototype.parseXml=function parseXml(entry,callback){
                         // onprogress callback
                     });
 }
-PPTModel.prototype.addSldmasteridlst=function addSldmasteridlst(lst){
-
-    var sldmasterid= lst; 
+PPTModel.prototype.addSldmasteridlst=function addSldmasteridlst(sldmasterid){
     for (var i = sldmasterid.length - 1; i >= 0; i--) {
-      //  if (sldmasterid[i]!=null){
             var id=sldmasterid.item(i).getAttribute("id");
             var target=sldmasterid.item(i).getAttribute("r:id");
             this.sldmasteridlst.put(id,target);
-            console.log(id);
-            console.log(target);
-      //  }
+            // console.log(id);
+            // console.log(target);
+    }
+}
+PPTModel.prototype.addSldlst=function addSldlst(sldlst){
+    for (var i = sldlst.length - 1; i >= 0; i--) {
+            var id=sldlst.item(i).getAttribute("id");
+            var target=sldlst.item(i).getAttribute("r:id");
+            this.sldidlst.put(id,target);
+            // console.log(id);
+            // console.log(target);
     }
 
 }
@@ -55,19 +70,21 @@ PPTModel.prototype.pushData=function pushData(entry){
             var extlst=root.getElementsByTagName("extlst");
 
             _this.addSldmasteridlst(sldmasteridlst);
+            _this.addSldlst(sldidlst);
+         
 
 
          });
     }
     else if(entry.filename.indexOf("ppt/_rels/presentation.xml.rels")>=0){
-         var pres=this.presentation;
+         var _pres=this.presentationRel;
          this.parseXml(entry,function(doc){
             var relations= doc.childNodes[0].childNodes;
             for (var i = relations.length - 1; i >= 0; i--) {
                 if (relations[i]!=null){
                     var id=relations[i].getAttribute("Id");
                     var target=relations[i].getAttribute("Target");
-                    pres.put(id,target);
+                    _pres.put(id,target);
                     // console.log(relations[i].getAttribute("Id"));
                     // console.log(relations[i].getAttribute("Target"));
                 }
@@ -102,7 +119,7 @@ PPTModel.prototype.pushData=function pushData(entry){
     else if(entry.filename.indexOf("ppt/theme/theme.xml")>=0){
          this.parseXml(entry);
     } else{
-        console.log(entry.filename+"pushData() 未匹配到任何关键字");
+        console.log(entry.filename+"   pushData() 未匹配到任何关键字");
     }  
 
 }
