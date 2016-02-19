@@ -114,7 +114,7 @@
         if (typeof requestFileSystem == "undefined")
             creationMethodInput.options.length = 1;
             fileInput.addEventListener('change', function() {
-            fileInput.disabled = true;
+            //fileInput.disabled = true;
            
             model.getEntries(fileInput.files[0], function(entries) {
                 fileList.innerHTML = "";

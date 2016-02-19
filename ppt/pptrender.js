@@ -1,23 +1,38 @@
 function PPTRender(pptModel){
     this.pptModel=pptModel;
+
+    var progressInterId;
+
+    this.viewerWidth =document.documentElement.clientWidth;
+    this.viewerHeight =document.documentElement.clientHeight;
+
+    this.baseSvg = d3.select("#tree-container").append("svg")
+    .attr("width", this.viewerWidth)
+    .attr("height", this.viewerHeight)
+    .attr("class", "overlay");
+  
+}
+PPTRender.prototype.drawRect= function drawRect(x,y,width,height,color){
+    color=color||"fill:blue";
+    this.baseSvg.append('rect').attr('x',x).attr('y', y).attr('width',width).attr('height',height).attr('style',color);
+}
+PPTRender.prototype.checkProgress=function checkProgress(){
+   
 }
 PPTRender.prototype.render=function render(){
+    var _this=this;
+    this.progressInterId=setInterval(function(){
+        if (_this.pptModel.spPrs.length>0) {
+            clearInterval(_this.progressInterId);
+            _this.realRender();
+        };
+    }, 1000);
+}
+PPTRender.prototype.realRender=function realRender(){
+    var _this=this;
+    var RATE=this.pptModel.sldszY/this.viewerHeight;
+    this.pptModel.spPrs.forEach(function(item){
+        _this.drawRect(item.x/RATE,item.y/RATE,item.width/RATE,item.height/RATE);
+    });
 
-    var viewerWidth = $(document).width();
-    var viewerHeight = window.screen.height
-
-
-    var baseSvg = d3.select("#tree-container").append("svg")
-    .attr("width", viewerWidth)
-    .attr("height", viewerHeight)
-    .attr("class", "overlay");
-
-    baseSvg.append('rect').attr('x',838200/6350).attr('y', 365125/6350).attr('width',10515600/6350).attr('height',1325563/6350).attr('style', 'fill:blue');
-    //x="20" y="20" width="250" height="250"
- 	baseSvg.append('rect').attr('x',838200/6350).attr('y', 365125/6350).attr('width',10515600/6350).attr('height',1325563/6350).attr('style', 'fill:blue');
-    //x="20" y="20" width="250" height="250"
-
-
-
-     
 }
