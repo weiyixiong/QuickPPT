@@ -6,6 +6,7 @@ function PPTRender(pptModel){
     this.viewerWidth =document.documentElement.clientWidth;
     this.viewerHeight =document.documentElement.clientHeight;
 
+
     this.baseSvg = d3.select("#tree-container").append("svg")
     .attr("width", this.viewerWidth)
     .attr("height", this.viewerHeight)
@@ -22,7 +23,7 @@ PPTRender.prototype.checkProgress=function checkProgress(){
 PPTRender.prototype.render=function render(){
     var _this=this;
     this.progressInterId=setInterval(function(){
-        if (_this.pptModel.spPrs.length>0) {
+        if (_this.pptModel.sldMasterLst.length>0) {
             clearInterval(_this.progressInterId);
             _this.realRender();
         };
@@ -31,8 +32,9 @@ PPTRender.prototype.render=function render(){
 PPTRender.prototype.realRender=function realRender(){
     var _this=this;
     var RATE=this.pptModel.sldszY/this.viewerHeight;
-    this.pptModel.spPrs.forEach(function(item){
-        _this.drawRect(item.x/RATE,item.y/RATE,item.width/RATE,item.height/RATE);
+    //var RATE=this.pptModel.sldszX/this.viewerWidth;
+    this.pptModel.sldMasterLst.forEach(function(item){
+        _this.drawRect(item.spPrModel.x/RATE,item.spPrModel.y/RATE,item.spPrModel.width/RATE,item.spPrModel.height/RATE);
     });
 
 }

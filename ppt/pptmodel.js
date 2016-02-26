@@ -4,16 +4,20 @@ function spPrModel(x,y,width,height){
     this.width=width;
     this.height=height;
 }
+function sldLayoutModel(spPrModel){
+    this.spPrModel=spPrModel;
+}
 function PPTModel(){
     this.presentation=new Map();
     this.presentationRel=new Map();
     this.sldmasteridlst=new Map();
     this.sldidlst=new Map();
+    this.sldMasterLst=new Array();
+    this.sldLayoutLst=new Array();
     this.sldszX=0;
     this.sldszY=0;
     this.sizeRate=6350;
 
-    this.spPrs=new Array();
 
     this.parser = new DOMParser({
                             locator:{},
@@ -64,15 +68,16 @@ PPTModel.prototype.addSldlst=function addSldlst(sldlst){
     }
 
 }
-PPTModel.prototype.addSpPr=function addSpPr(spPr){
+PPTModel.prototype.addSpPr=function addSpPr(spPr,sldLayoutArr){
     for (var i = spPr.length - 1; i >= 0; i--) {
-        var x=spPr.item(i).getElementsByTagName("off").item(0).getAttribute('x');
-        var y=spPr.item(i).getElementsByTagName("off").item(0).getAttribute('y');
-        var width=spPr.item(i).getElementsByTagName("ext").item(0).getAttribute('cx');
-        var height=spPr.item(i).getElementsByTagName("ext").item(0).getAttribute('cy');
-        this.spPrs.push(new spPrModel(x,y,width,height));
+        if(spPr.item(i).getElementsByTagName("off").item(0)!=null){
+            var x=spPr.item(i).getElementsByTagName("off").item(0).getAttribute('x');
+            var y=spPr.item(i).getElementsByTagName("off").item(0).getAttribute('y');
+            var width=spPr.item(i).getElementsByTagName("ext").item(0).getAttribute('cx');
+            var height=spPr.item(i).getElementsByTagName("ext").item(0).getAttribute('cy');
+            sldLayoutArr.push(new sldLayoutModel(new spPrModel(x,y,width,height)));
+        }
     }
-
 }
 PPTModel.prototype.pushData=function pushData(entry){
     var _this=this;
@@ -119,15 +124,20 @@ PPTModel.prototype.pushData=function pushData(entry){
         var _this=this;
         this.parseXml(entry,function(doc){
             var spPr=doc.getElementsByTagName('spPr');
-            _this.addSpPr(spPr);
+            _this.addSpPr(spPr,_this.sldMasterLst);
 
         });
     }
     else if(entry.filename.indexOf("ppt/slideMasters/_rels/")>=0){
          this.parseXml(entry);
     }
-    else if(entry.filename.indexOf("ppt/slideLayouts/slideLayout")>=0){
-         this.parseXml(entry);
+    else if(entry.filename.indexOf("ppt/slideLayouts/slideLayout.xml")>=0){
+        var _this=this;
+        this.parseXml(entry,function(doc){
+            var spPr=doc.getElementsByTagName('spPr');
+            _this.addSpPr(spPr,_this.sldLayoutLst);
+
+        });
     }
     else if(entry.filename.indexOf("ppt/slideLayouts/_rels")>=0){
          this.parseXml(entry);
