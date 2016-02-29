@@ -148,7 +148,7 @@ PPTModel.prototype.pushData=function pushData(entry){
     else if(entry.filename.indexOf("ppt/slideMasters/_rels/")>=0){
          this.parseXml(entry);
     }
-    else if(entry.filename.indexOf("ppt/slideLayouts/slideLayout")>=0){
+    else if(entry.filename.indexOf("ppt/slideLayouts/slideLayout1.xml")>=0){
         var _this=this;
         this.parseXml(entry,function(doc){
             var spPr=doc.getElementsByTagName('spPr');

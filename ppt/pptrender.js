@@ -1,3 +1,4 @@
+var svgNS = "http://www.w3.org/2000/svg";
 function PPTRender(pptModel){
     this.pptModel=pptModel;
 
@@ -18,10 +19,12 @@ PPTRender.prototype.drawRect= function drawRect(x,y,width,height,color){
     this.baseSvg.append('rect').attr('x',x).attr('y', y).attr('width',width).attr('height',height).attr('style',color);
 }
 PPTRender.prototype.drawTextAtRect= function drawTextAtRect(text,spPr,RATE){
-    var color="fill:black";
-    var textArea=this.baseSvg.append('svg').attr('x',spPr.x/RATE).attr('y', spPr.y/RATE).attr('width',spPr.width/RATE).attr('height',spPr.height/RATE);
-    var textContent=textArea.append('text').attr('x','50%').attr('y','50%').attr('dy','.3em').attr('text-anchor','middle').attr('fill','black');
-    textContent.textContent=text;
+    var color="fill:blue";
+    var textArea=this.baseSvg.append('svg').attr('x',spPr.x/RATE).attr('y', spPr.y/RATE).attr('width',spPr.width/RATE).attr('height',spPr.height/RATE);//.attr('style',color);
+    var textContent=textArea.append('text').attr('x','50%').attr('y','50%').attr('dy','.3em')
+    .attr('text-anchor','middle').attr('fill','black')
+    .attr('font-size','60px');
+    textContent.text(text);
 }
 PPTRender.prototype.checkProgress=function checkProgress(){
    
