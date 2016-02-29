@@ -7,6 +7,13 @@ function spPrModel(x,y,width,height){
 function sldLayoutModel(spPrModel){
     this.spPrModel=spPrModel;
 }
+function sldContentDecModel(topInt,leftInt,rigthtInt,bottomInt){
+    this.topInt=topInt;
+    this.leftInt=leftInt;
+    this.rigthtInt=rigthtInt;
+    this.bottomInt=bottomInt;
+    this.algn='ctr';
+}
 function PPTModel(){
     this.presentation=new Map();
     this.presentationRel=new Map();
@@ -14,6 +21,8 @@ function PPTModel(){
     this.sldidlst=new Map();
     this.sldMasterLst=new Array();
     this.sldLayoutLst=new Array();
+    this.sldContent=new Array();
+    this.sldContentDec=new Array();
     this.sldszX=0;
     this.sldszY=0;
     this.sizeRate=6350;
@@ -79,6 +88,14 @@ PPTModel.prototype.addSpPr=function addSpPr(spPr,sldLayoutArr){
         }
     }
 }
+PPTModel.prototype.addSldContent=function addSldContent(slides){
+    var _this=this;
+    for (var i = slides.length - 1; i >= 0; i--) {
+        _this.sldContent.push(slides.item(i).textContent);
+    }
+
+
+}
 PPTModel.prototype.pushData=function pushData(entry){
     var _this=this;
     if(entry.filename.indexOf("ppt/presentation.xml")>=0){
@@ -131,7 +148,7 @@ PPTModel.prototype.pushData=function pushData(entry){
     else if(entry.filename.indexOf("ppt/slideMasters/_rels/")>=0){
          this.parseXml(entry);
     }
-    else if(entry.filename.indexOf("ppt/slideLayouts/slideLayout.xml")>=0){
+    else if(entry.filename.indexOf("ppt/slideLayouts/slideLayout")>=0){
         var _this=this;
         this.parseXml(entry,function(doc){
             var spPr=doc.getElementsByTagName('spPr');
@@ -143,7 +160,12 @@ PPTModel.prototype.pushData=function pushData(entry){
          this.parseXml(entry);
     }
     else if(entry.filename.indexOf("ppt/slides/slide")>=0){
-         this.parseXml(entry);
+        var _this=this;
+        this.parseXml(entry,function(doc){
+            var text=doc.getElementsByTagName('p');
+            _this.addSldContent(text);
+
+        });
     }
     else if(entry.filename.indexOf("ppt/slides/_rels")>=0){
          this.parseXml(entry);
