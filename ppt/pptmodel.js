@@ -1,8 +1,10 @@
-function spPrModel(x,y,width,height){
+function spPrModel(x,y,width,height,textsize,txtAnchor){
     this.x=x;
     this.y=y;
     this.width=width;
     this.height=height;
+    this.textsize=textsize;
+    this.textAnchor=txtAnchor;
 }
 function sldLayoutModel(spPrModel){
     this.spPrModel=spPrModel;
@@ -77,17 +79,33 @@ PPTModel.prototype.addSldlst=function addSldlst(sldlst){
     }
 
 }
-PPTModel.prototype.addSpPr=function addSpPr(spPr,sldLayoutArr){
+PPTModel.prototype.addSpPr=function addSpPr(spPr,sldLayoutArr,textSize,txtAnchor){
     for (var i = spPr.length - 1; i >= 0; i--) {
         if(spPr.item(i).getElementsByTagName("off").item(0)!=null){
             var x=spPr.item(i).getElementsByTagName("off").item(0).getAttribute('x');
             var y=spPr.item(i).getElementsByTagName("off").item(0).getAttribute('y');
             var width=spPr.item(i).getElementsByTagName("ext").item(0).getAttribute('cx');
             var height=spPr.item(i).getElementsByTagName("ext").item(0).getAttribute('cy');
-            sldLayoutArr.push(new sldLayoutModel(new spPrModel(x,y,width,height)));
+            sldLayoutArr.push(new sldLayoutModel(new spPrModel(x,y,width,height,textSize,txtAnchor)));
         }
     }
 }
+PPTModel.prototype.addSp=function addSpPr(sp,sldLayoutArr){
+    var _this=this;
+    for (var i = sp.length - 1; i >= 0; i--) {
+          var defRPr=sp.item(i).getElementsByTagName('defRPr');
+          var anchor=sp.item(i).getElementsByTagName('bodyPr');
+          if(defRPr.length>0){
+             var txtSz=defRPr.item(0).getAttribute('sz')||2000;
+          }
+          if(anchor.length>0){
+             var txtAnchor=anchor.item(0).getAttribute('anchor')||'t';
+          }
+          var spPr=sp.item(i).getElementsByTagName('spPr');
+          _this.addSpPr(spPr,sldLayoutArr,txtSz,txtAnchor);
+    }
+}
+
 PPTModel.prototype.addSldContent=function addSldContent(slides){
     var _this=this;
     for (var i = slides.length - 1; i >= 0; i--) {
@@ -140,8 +158,8 @@ PPTModel.prototype.pushData=function pushData(entry){
     else if(entry.filename.indexOf("ppt/slideMasters/slideMaster")>=0){
         var _this=this;
         this.parseXml(entry,function(doc){
-            var spPr=doc.getElementsByTagName('spPr');
-            _this.addSpPr(spPr,_this.sldMasterLst);
+            var sp=doc.getElementsByTagName('sp');
+            _this.addSp(sp,_this.sldMasterLst);
 
         });
     }
@@ -151,8 +169,8 @@ PPTModel.prototype.pushData=function pushData(entry){
     else if(entry.filename.indexOf("ppt/slideLayouts/slideLayout1.xml")>=0){
         var _this=this;
         this.parseXml(entry,function(doc){
-            var spPr=doc.getElementsByTagName('spPr');
-            _this.addSpPr(spPr,_this.sldLayoutLst);
+            var sp=doc.getElementsByTagName('sp');
+            _this.addSp(sp,_this.sldLayoutLst);
 
         });
     }

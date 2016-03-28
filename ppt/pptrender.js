@@ -23,7 +23,14 @@ PPTRender.prototype.drawTextAtRect= function drawTextAtRect(text,spPr,RATE){
     var textArea=this.baseSvg.append('svg').attr('x',spPr.x/RATE).attr('y', spPr.y/RATE).attr('width',spPr.width/RATE).attr('height',spPr.height/RATE);//.attr('style',color);
     var textContent=textArea.append('text').attr('x','50%').attr('y','50%').attr('dy','.3em')
     .attr('text-anchor','middle').attr('fill','black')
-    .attr('font-size','60px');
+    .attr('font-size',spPr.textsize/100+'px');
+
+    if(spPr.textAnchor=='b'){
+        textContent.attr('y', '100%').attr('dy', '-1em');;
+    }else if(spPr.textAnchor=='t'){
+        textContent.attr('y', '0').attr('dy', '1em');;
+    }
+
     textContent.text(text);
 }
 PPTRender.prototype.checkProgress=function checkProgress(){
@@ -40,8 +47,8 @@ PPTRender.prototype.render=function render(){
 }
 PPTRender.prototype.realRender=function realRender(){
     var _this=this;
-    var RATE=this.pptModel.sldszY/this.viewerHeight;
-    //var RATE=this.pptModel.sldszX/this.viewerWidth;
+    // var RATE=this.pptModel.sldszY/this.viewerHeight;
+    var RATE=this.pptModel.sldszX/this.viewerWidth;
     // this.pptModel.sldMasterLst.forEach(function(item){
     //     _this.drawRect(item.spPrModel.x/RATE,item.spPrModel.y/RATE,item.spPrModel.width/RATE,item.spPrModel.height/RATE);
     // });
