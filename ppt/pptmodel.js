@@ -107,12 +107,11 @@ PPTModel.prototype.addSp=function addSpPr(sp,sldLayoutArr){
 }
 
 PPTModel.prototype.addSldContent=function addSldContent(slides){
-    var _this=this;
+    var array=new Array();
     for (var i = slides.length - 1; i >= 0; i--) {
-        _this.sldContent.push(slides.item(i).textContent);
+        array.push(slides.item(i).textContent);
     }
-
-
+    this.sldContent.push(array);
 }
 PPTModel.prototype.pushData=function pushData(entry){
     var _this=this;

@@ -47,14 +47,15 @@ PPTRender.prototype.render=function render(){
 }
 PPTRender.prototype.realRender=function realRender(){
     var _this=this;
-    // var RATE=this.pptModel.sldszY/this.viewerHeight;
-    var RATE=this.pptModel.sldszX/this.viewerWidth;
+    var RATE=this.pptModel.sldszY/this.viewerHeight;
+    // var RATE=this.pptModel.sldszX/this.viewerWidth;
     // this.pptModel.sldMasterLst.forEach(function(item){
-    //     _this.drawRect(item.spPrModel.x/RATE,item.spPrModel.y/RATE,item.spPrModel.width/RATE,item.spPrModel.height/RATE);
+        // _this.drawRect(item.spPrModel.x/RATE,item.spPrModel.y/RATE,item.spPrModel.width/RATE,item.spPrModel.height/RATE);
     // });
-    var textContent=this.pptModel.sldContent;
+    var textContent=this.pptModel.sldContent[0];
     for (var i = textContent.length - 1; i >= 0; i--) {
            _this.drawTextAtRect(textContent[i],this.pptModel.sldLayoutLst[i].spPrModel,RATE);
+           // _this.drawTextAtRect(textContent[i],this.pptModel.sldMasterLst[ textContent.length -i].spPrModel,RATE);
     }
 
 }
