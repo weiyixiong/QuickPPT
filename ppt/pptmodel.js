@@ -6,8 +6,9 @@ function spPrModel(x,y,width,height,textsize,txtAnchor){
     this.textsize=textsize;
     this.textAnchor=txtAnchor;
 }
-function sldLayoutModel(spPrModel){
-    this.spPrModel=spPrModel;
+function sldLayoutModel(){
+    // this.spPrModel=spPrModel;
+    this.spPrModels=new Array();
 }
 function sldContentDecModel(topInt,leftInt,rigthtInt,bottomInt){
     this.topInt=topInt;
@@ -79,19 +80,22 @@ PPTModel.prototype.addSldlst=function addSldlst(sldlst){
     }
 
 }
-PPTModel.prototype.addSpPr=function addSpPr(spPr,sldLayoutArr,textSize,txtAnchor){
+PPTModel.prototype.addSpPr=function addSpPr(spPr,sldLayoutModel,textSize,txtAnchor){
     for (var i = spPr.length - 1; i >= 0; i--) {
         if(spPr.item(i).getElementsByTagName("off").item(0)!=null){
             var x=spPr.item(i).getElementsByTagName("off").item(0).getAttribute('x');
             var y=spPr.item(i).getElementsByTagName("off").item(0).getAttribute('y');
             var width=spPr.item(i).getElementsByTagName("ext").item(0).getAttribute('cx');
             var height=spPr.item(i).getElementsByTagName("ext").item(0).getAttribute('cy');
-            sldLayoutArr.push(new sldLayoutModel(new spPrModel(x,y,width,height,textSize,txtAnchor)));
+            // sldLayoutArr.push(new sldLayoutModel(new spPrModel(x,y,width,height,textSize,txtAnchor)));
+            sldLayoutModel.spPrModels.push(new spPrModel(x,y,width,height,textSize,txtAnchor));
         }
     }
 }
-PPTModel.prototype.addSp=function addSpPr(sp,sldLayoutArr){
+PPTModel.prototype.addSp=function addSp(sp,sldLayoutArr){
     var _this=this;
+    var sldlayoutmodel=new sldLayoutModel();
+
     for (var i = sp.length - 1; i >= 0; i--) {
           var defRPr=sp.item(i).getElementsByTagName('defRPr');
           var anchor=sp.item(i).getElementsByTagName('bodyPr');
@@ -102,8 +106,10 @@ PPTModel.prototype.addSp=function addSpPr(sp,sldLayoutArr){
              var txtAnchor=anchor.item(0).getAttribute('anchor')||'t';
           }
           var spPr=sp.item(i).getElementsByTagName('spPr');
-          _this.addSpPr(spPr,sldLayoutArr,txtSz,txtAnchor);
+          _this.addSpPr(spPr,sldlayoutmodel,txtSz,txtAnchor);
     }
+    sldLayoutArr.push(sldlayoutmodel);
+
 }
 
 PPTModel.prototype.addSldContent=function addSldContent(slides){
