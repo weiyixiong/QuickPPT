@@ -92,6 +92,7 @@ PPTModel.prototype.addSpPr=function addSpPr(spPr,sldLayoutModel,textSize,txtAnch
         }
     }
 }
+
 PPTModel.prototype.addSp=function addSp(sp,sldLayoutArr){
     var _this=this;
     var sldlayoutmodel=new sldLayoutModel();
@@ -118,6 +119,9 @@ PPTModel.prototype.addSldContent=function addSldContent(slides){
         array.push(slides.item(i).textContent);
     }
     this.sldContent.push(array);
+}
+PPTModel.prototype.getIndex=function getIndex(string){
+    return string.match(/\d/g);
 }
 PPTModel.prototype.pushData=function pushData(entry){
     var _this=this;
@@ -171,13 +175,15 @@ PPTModel.prototype.pushData=function pushData(entry){
     else if(entry.filename.indexOf("ppt/slideMasters/_rels/")>=0){
          this.parseXml(entry);
     }
-    else if(entry.filename.indexOf("ppt/slideLayouts/slideLayout1.xml")>=0){
-        var _this=this;
-        this.parseXml(entry,function(doc){
-            var sp=doc.getElementsByTagName('sp');
-            _this.addSp(sp,_this.sldLayoutLst);
+    else if(entry.filename.indexOf("ppt/slideLayouts/slideLayout")>=0){
+        if(this.getIndex(entry.filename)==1){
+            var _this=this;
+            this.parseXml(entry,function(doc){
+                var sp=doc.getElementsByTagName('sp');
+                _this.addSp(sp,_this.sldLayoutLst);
 
-        });
+            });
+        }
     }
     else if(entry.filename.indexOf("ppt/slideLayouts/_rels")>=0){
          this.parseXml(entry);
