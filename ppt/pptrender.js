@@ -22,7 +22,7 @@ PPTRender.prototype.drawRect= function drawRect(x,y,width,height,color){
     color=color||"fill:blue";
     this.baseSvg.append('rect').attr('x',x).attr('y', y).attr('width',width).attr('height',height).attr('style',color);
 }
-PPTRender.prototype.drawTextAtRect= function drawTextAtRect(text,spPr,rate){
+PPTRender.prototype.drawTextAtRect= function drawTextAtRect(textContent,spPr,rate){
     var color="fill:blue";
     var textArea=this.baseSvg.append('svg')
     .attr('x',spPr.x/rate.heightRate)
@@ -44,7 +44,10 @@ PPTRender.prototype.drawTextAtRect= function drawTextAtRect(text,spPr,rate){
         textContent.attr('y', '0').attr('dy', '1em');;
     }
 
-    textContent.text(text);
+    if(textContent.align=="r"){
+        textContent.attr('x','100%');
+    }
+    textContent.text(textContent.text);
 }
 PPTRender.prototype.checkProgress=function checkProgress(){
    
@@ -59,6 +62,8 @@ PPTRender.prototype.render=function render(){
     }, 1000);
 }
 PPTRender.prototype.realRender=function realRender(){
+    var page=1;
+
     var _this=this;
     var rate=new Rate();
     rate.widthRate=this.pptModel.sldszY/this.viewerHeight;
@@ -66,11 +71,18 @@ PPTRender.prototype.realRender=function realRender(){
     // this.pptModel.sldMasterLst.forEach(function(item){
         // _this.drawRect(item.spPrModel.x/RATE,item.spPrModel.y/RATE,item.spPrModel.width/RATE,item.spPrModel.height/RATE);
     // });
-    var textContent=this.pptModel.sldContent[0];
-    var spprs=this.pptModel.sldLayoutLst[0];
-    for (var i = textContent.length - 1; i >= 0; i--) {
-           _this.drawTextAtRect(textContent[i],spprs.spPrModels[i],rate);
-           // _this.drawTextAtRect(textContent[i],this.pptModel.sldMasterLst[ textContent.length -i].spPrModel,RATE);
+    var textContent=this.pptModel.sldContents[page];
+    var spprs=this.pptModel.sldLayoutLst[page];
+    if(spprs.spPrModels.length==0){
+        spprs=this.pptModel.sldMasterLst[0];
     }
+    for (var i = textContent.length - 1; i >= 0; i--) {
+           // _this.drawTextAtRect(textContent[i],spprs.spPrModels[i],rate);
+           _this.drawTextAtRect(textContent[i],spprs.spPrModels[textContent.length-i+2],rate);
+    }
+     // for (var i = 0; i <textContent.length; i++) {
+           // _this.drawTextAtRect(textContent[i],spprs.spPrModels[i],rate);
+           // _this.drawTextAtRect(textContent[i],this.pptModel.sldMasterLst[ textContent.length -i].spPrModel,RATE);
+    // }
 
 }

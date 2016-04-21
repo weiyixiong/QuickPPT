@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<p:sldLayout preserve="1" type="title" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
-	<p:cSld name="标题幻灯片">
+<p:sldLayout preserve="1" type="obj" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+	<p:cSld name="标题和内容">
 		<p:spTree>
 			<p:nvGrpSpPr>
 				<p:cNvPr id="1" name=""/>
@@ -22,22 +22,13 @@
 						<a:spLocks noGrp="1"/>
 					</p:cNvSpPr>
 					<p:nvPr>
-						<p:ph type="ctrTitle"/>
+						<p:ph type="title"/>
 					</p:nvPr>
 				</p:nvSpPr>
-				<p:spPr>
-					<a:xfrm>
-						<a:off x="1524000" y="1122363"/>
-						<a:ext cx="9144000" cy="2387600"/>
-					</a:xfrm>
-				</p:spPr>
+				<p:spPr/>
 				<p:txBody>
-					<a:bodyPr anchor="b"/>
-					<a:lstStyle>
-						<a:lvl1pPr algn="ctr">
-							<a:defRPr sz="6000"/>
-						</a:lvl1pPr>
-					</a:lstStyle>
+					<a:bodyPr/>
+					<a:lstStyle/>
 					<a:p>
 						<a:r>
 							<a:rPr altLang="en-US" kumimoji="1" lang="zh-CN" smtClean="0"/>
@@ -49,64 +40,51 @@
 			</p:sp>
 			<p:sp>
 				<p:nvSpPr>
-					<p:cNvPr id="3" name="副标题 2"/>
+					<p:cNvPr id="3" name="内容占位符 2"/>
 					<p:cNvSpPr>
 						<a:spLocks noGrp="1"/>
 					</p:cNvSpPr>
 					<p:nvPr>
-						<p:ph idx="1" type="subTitle"/>
+						<p:ph idx="1"/>
 					</p:nvPr>
 				</p:nvSpPr>
-				<p:spPr>
-					<a:xfrm>
-						<a:off x="1524000" y="3602038"/>
-						<a:ext cx="9144000" cy="1655762"/>
-					</a:xfrm>
-				</p:spPr>
+				<p:spPr/>
 				<p:txBody>
 					<a:bodyPr/>
-					<a:lstStyle>
-						<a:lvl1pPr algn="ctr" indent="0" marL="0">
-							<a:buNone/>
-							<a:defRPr sz="2400"/>
-						</a:lvl1pPr>
-						<a:lvl2pPr algn="ctr" indent="0" marL="457200">
-							<a:buNone/>
-							<a:defRPr sz="2000"/>
-						</a:lvl2pPr>
-						<a:lvl3pPr algn="ctr" indent="0" marL="914400">
-							<a:buNone/>
-							<a:defRPr sz="1800"/>
-						</a:lvl3pPr>
-						<a:lvl4pPr algn="ctr" indent="0" marL="1371600">
-							<a:buNone/>
-							<a:defRPr sz="1600"/>
-						</a:lvl4pPr>
-						<a:lvl5pPr algn="ctr" indent="0" marL="1828800">
-							<a:buNone/>
-							<a:defRPr sz="1600"/>
-						</a:lvl5pPr>
-						<a:lvl6pPr algn="ctr" indent="0" marL="2286000">
-							<a:buNone/>
-							<a:defRPr sz="1600"/>
-						</a:lvl6pPr>
-						<a:lvl7pPr algn="ctr" indent="0" marL="2743200">
-							<a:buNone/>
-							<a:defRPr sz="1600"/>
-						</a:lvl7pPr>
-						<a:lvl8pPr algn="ctr" indent="0" marL="3200400">
-							<a:buNone/>
-							<a:defRPr sz="1600"/>
-						</a:lvl8pPr>
-						<a:lvl9pPr algn="ctr" indent="0" marL="3657600">
-							<a:buNone/>
-							<a:defRPr sz="1600"/>
-						</a:lvl9pPr>
-					</a:lstStyle>
+					<a:lstStyle/>
 					<a:p>
+						<a:pPr lvl="0"/>
 						<a:r>
 							<a:rPr altLang="en-US" kumimoji="1" lang="zh-CN" smtClean="0"/>
-							<a:t>单击此处编辑母版副标题样式</a:t>
+							<a:t>单击此处编辑母版文本样式</a:t>
+						</a:r>
+					</a:p>
+					<a:p>
+						<a:pPr lvl="1"/>
+						<a:r>
+							<a:rPr altLang="en-US" kumimoji="1" lang="zh-CN" smtClean="0"/>
+							<a:t>二级</a:t>
+						</a:r>
+					</a:p>
+					<a:p>
+						<a:pPr lvl="2"/>
+						<a:r>
+							<a:rPr altLang="en-US" kumimoji="1" lang="zh-CN" smtClean="0"/>
+							<a:t>三级</a:t>
+						</a:r>
+					</a:p>
+					<a:p>
+						<a:pPr lvl="3"/>
+						<a:r>
+							<a:rPr altLang="en-US" kumimoji="1" lang="zh-CN" smtClean="0"/>
+							<a:t>四级</a:t>
+						</a:r>
+					</a:p>
+					<a:p>
+						<a:pPr lvl="4"/>
+						<a:r>
+							<a:rPr altLang="en-US" kumimoji="1" lang="zh-CN" smtClean="0"/>
+							<a:t>五级</a:t>
 						</a:r>
 						<a:endParaRPr altLang="en-US" kumimoji="1" lang="zh-CN"/>
 					</a:p>
@@ -129,7 +107,7 @@
 					<a:p>
 						<a:fld id="{3061FC46-4A4A-054B-8F30-7B28FA2F0C74}" type="datetimeFigureOut">
 							<a:rPr altLang="en-US" kumimoji="1" lang="zh-CN" smtClean="0"/>
-							<a:t>16/4/12</a:t>
+							<a:t>16/4/21</a:t>
 						</a:fld>
 						<a:endParaRPr altLang="en-US" kumimoji="1" lang="zh-CN"/>
 					</a:p>
@@ -180,7 +158,7 @@
 		</p:spTree>
 		<p:extLst>
 			<p:ext uri="{BB962C8B-B14F-4D97-AF65-F5344CB8AC3E}">
-				<p14:creationId val="1360217487" xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main"/>
+				<p14:creationId val="1285219169" xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main"/>
 			</p:ext>
 		</p:extLst>
 	</p:cSld>
