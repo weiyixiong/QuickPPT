@@ -22,7 +22,7 @@ PPTRender.prototype.drawRect= function drawRect(x,y,width,height,color){
     color=color||"fill:blue";
     this.baseSvg.append('rect').attr('x',x).attr('y', y).attr('width',width).attr('height',height).attr('style',color);
 }
-PPTRender.prototype.drawTextAtRect= function drawTextAtRect(textContent,spPr,rate){
+PPTRender.prototype.drawTextAtRect= function drawTextAtRect(Content,spPr,rate){
     var color="fill:blue";
     var textArea=this.baseSvg.append('svg')
     .attr('x',spPr.x/rate.heightRate)
@@ -44,10 +44,18 @@ PPTRender.prototype.drawTextAtRect= function drawTextAtRect(textContent,spPr,rat
         textContent.attr('y', '0').attr('dy', '1em');;
     }
 
-    if(textContent.align=="r"){
+    if(Content.align=="r"||spPr.defaultAlign=="r"){
         textContent.attr('x','100%');
+        textContent.attr('dx','-'+Content.text.length+'em')
     }
-    textContent.text(textContent.text);
+    else if(Content.align=="l"||spPr.defaultAlign=="l"){
+        textContent.attr('x','0');
+        textContent.attr('dx',Content.text.length+'em')
+    }
+    if (spPr.buchar) {
+        Content.text=spPr.buchar+Content.text;
+    };
+    textContent.text(Content.text);
 }
 PPTRender.prototype.checkProgress=function checkProgress(){
    
@@ -78,7 +86,7 @@ PPTRender.prototype.realRender=function realRender(){
     }
     for (var i = textContent.length - 1; i >= 0; i--) {
            // _this.drawTextAtRect(textContent[i],spprs.spPrModels[i],rate);
-           _this.drawTextAtRect(textContent[i],spprs.spPrModels[textContent.length-i+2],rate);
+           _this.drawTextAtRect(textContent[i],spprs.spPrModels[textContent.length-i-1],rate);
     }
      // for (var i = 0; i <textContent.length; i++) {
            // _this.drawTextAtRect(textContent[i],spprs.spPrModels[i],rate);
