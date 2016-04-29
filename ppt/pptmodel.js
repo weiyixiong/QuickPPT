@@ -1,3 +1,4 @@
+//TODO 相对于多行的情况 P标签提取会导致分割的情况,所以改为textbody为单位,目前改到addsldContent
 function spPrModel(x,y,width,height,textsize,txtAnchor,defaultAlign,buchar){
     this.x=x;
     this.y=y;
@@ -8,13 +9,16 @@ function spPrModel(x,y,width,height,textsize,txtAnchor,defaultAlign,buchar){
     this.defaultAlign=defaultAlign;
     this.buchar=buchar;
 }
+function textBody(align,text){
+    this.align=align;
+    this.text=text;
+}
 function sldLayoutModel(){
     // this.spPrModel=spPrModel;
     this.spPrModels=new Array();
 }
 function sldContent(align,text){
-    this.align=align;
-    this.text=text;
+    this.textBody=new Array()
 }
 function sldContentDecModel(topInt,leftInt,rigthtInt,bottomInt){
     this.topInt=topInt;
@@ -166,15 +170,15 @@ PPTModel.prototype.addMasterSp=function addSp(doc,sldLayoutArr,index){
 
 }
 
-PPTModel.prototype.addSldContent=function addSldContent(slides){
+PPTModel.prototype.addSldContent=function addSldContent(textbody){
     var array=new Array();
-    
-    for (var i = slides.length - 1; i >= 0; i--) {
-        var alignEles=slides.item(i).getElementsByTagName("pPr");
+
+    for (var i = textbody.length - 1; i >= 0; i--) {
+        var alignEles=textbody.item(i).getElementsByTagName("pPr");
         if (alignEles.length!=0) {
-            array.push(new sldContent(alignEles.item(0).getAttribute('algn'),slides.item(i).textContent));
+            array.push(new sldContent(alignEles.item(0).getAttribute('algn'),textbody.item(i).textContent));
         }else{
-            array.push(new sldContent('l',slides.item(i).textContent));
+            array.push(new sldContent('none',textbody.item(i).textContent));
         }
     }
     this.sldContents.push(array);
@@ -253,7 +257,7 @@ PPTModel.prototype.pushData=function pushData(entry){
         var _this=this;
         var index=this.getIndex(entry.filename)-1;
         this.parseXml(entry,function(doc){
-            var text=doc.getElementsByTagName("p");
+            var text=doc.getElementsByTagName("txBody");
             var phType=doc.getElementsByTagName("ph");
             _this.addSldContent(text);
             

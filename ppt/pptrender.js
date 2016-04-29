@@ -43,15 +43,26 @@ PPTRender.prototype.drawTextAtRect= function drawTextAtRect(Content,spPr,rate){
     }else if(spPr.textAnchor=='t'){
         textContent.attr('y', '0').attr('dy', '1em');;
     }
+    if (Content.align=="none") {
+        if(spPr.defaultAlign=="r"){
+            textContent.attr('x','100%');
+            textContent.attr('dx','-'+Content.text.length+'em')
+        }
+        else if(spPr.defaultAlign=="l"){
+            textContent.attr('x','0');
+            textContent.attr('dx',Content.text.length+'em')
+        }
+    }else{
+        if(Content.align=="r"){
+            textContent.attr('x','100%');
+            textContent.attr('dx','-'+Content.text.length+'em')
+        }
+        else if(Content.align=="l"){
+            textContent.attr('x','0');
+            textContent.attr('dx',Content.text.length+'em')
+        }
+    }
 
-    if(Content.align=="r"||spPr.defaultAlign=="r"){
-        textContent.attr('x','100%');
-        textContent.attr('dx','-'+Content.text.length+'em')
-    }
-    else if(Content.align=="l"||spPr.defaultAlign=="l"){
-        textContent.attr('x','0');
-        textContent.attr('dx',Content.text.length+'em')
-    }
     if (spPr.buchar) {
         Content.text=spPr.buchar+Content.text;
     };
