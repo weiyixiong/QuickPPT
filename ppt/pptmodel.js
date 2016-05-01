@@ -9,16 +9,19 @@ function spPrModel(x,y,width,height,textsize,txtAnchor,defaultAlign,buchar){
     this.defaultAlign=defaultAlign;
     this.buchar=buchar;
 }
-function textBody(align,text){
+function textP(align,text){
     this.align=align;
     this.text=text;
+}
+function textBody(pArray){
+    this.para=pArray;
 }
 function sldLayoutModel(){
     // this.spPrModel=spPrModel;
     this.spPrModels=new Array();
 }
-function sldContent(align,text){
-    this.textBody=new Array()
+function sldContent(textbodys){
+    this.textbodys=textbodys;
 }
 function sldContentDecModel(topInt,leftInt,rigthtInt,bottomInt){
     this.topInt=topInt;
@@ -171,17 +174,21 @@ PPTModel.prototype.addMasterSp=function addSp(doc,sldLayoutArr,index){
 }
 
 PPTModel.prototype.addSldContent=function addSldContent(textbody){
-    var array=new Array();
-
-    for (var i = textbody.length - 1; i >= 0; i--) {
-        var alignEles=textbody.item(i).getElementsByTagName("pPr");
-        if (alignEles.length!=0) {
-            array.push(new sldContent(alignEles.item(0).getAttribute('algn'),textbody.item(i).textContent));
-        }else{
-            array.push(new sldContent('none',textbody.item(i).textContent));
+    var textbodys=new Array();
+    for (var j = 0; j <textbody.length; j++) {
+        var p=textbody.item(j).getElementsByTagName("p");
+        var array=new Array();
+        for (var i = 0; i < p.length; i++) {
+            var alignEles=p.item(i).getElementsByTagName("pPr");
+            if (alignEles.length!=0) {
+                array.push(new textP(alignEles.item(0).getAttribute('algn'),p.item(i).textContent));
+            }else{
+                array.push(new textP('none',p.item(i).textContent));
+            }
         }
+        textbodys.push(array);       
     }
-    this.sldContents.push(array);
+     this.sldContents.push(new sldContent(textbodys));
 }
 PPTModel.prototype.getIndex=function getIndex(string){
     return string.match(/\d/g);

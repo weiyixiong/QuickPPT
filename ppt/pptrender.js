@@ -22,7 +22,7 @@ PPTRender.prototype.drawRect= function drawRect(x,y,width,height,color){
     color=color||"fill:blue";
     this.baseSvg.append('rect').attr('x',x).attr('y', y).attr('width',width).attr('height',height).attr('style',color);
 }
-PPTRender.prototype.drawTextAtRect= function drawTextAtRect(Content,spPr,rate){
+PPTRender.prototype.drawTextAtRect= function drawTextAtRect(textbodys,spPr,rate){
     var color="fill:blue";
     var textArea=this.baseSvg.append('svg')
     .attr('x',spPr.x/rate.heightRate)
@@ -30,43 +30,48 @@ PPTRender.prototype.drawTextAtRect= function drawTextAtRect(Content,spPr,rate){
     .attr('width',spPr.width/rate.heightRate)
     .attr('height',spPr.height/rate.widthRate);//.attr('style',color);
 
-    var textContent=textArea.append('text')
-    .attr('x','50%')
-    .attr('y','50%')
-    .attr('dy','.3em')
-    .attr('text-anchor','middle')
-    .attr('fill','black')
-    .attr('font-size',spPr.textsize/100+'px');
+    for (var i = 0; i < textbodys.length; i++) {
+         var Content=textbodys[i];
+         var textContent=textArea.append('text')
+            .attr('x','50%')
+            .attr('y',i*1.5+1+'em')
+            .attr('dx','2em')
+            .attr('dy','.3em')
+            .attr('text-anchor','middle')
+            .attr('fill','black')
+            .attr('font-size',spPr.textsize/100+'px');
 
-    if(spPr.textAnchor=='b'){
-        textContent.attr('y', '100%').attr('dy', '-1em');;
-    }else if(spPr.textAnchor=='t'){
-        textContent.attr('y', '0').attr('dy', '1em');;
-    }
-    if (Content.align=="none") {
-        if(spPr.defaultAlign=="r"){
-            textContent.attr('x','100%');
-            textContent.attr('dx','-'+Content.text.length+'em')
-        }
-        else if(spPr.defaultAlign=="l"){
-            textContent.attr('x','0');
-            textContent.attr('dx',Content.text.length+'em')
-        }
-    }else{
-        if(Content.align=="r"){
-            textContent.attr('x','100%');
-            textContent.attr('dx','-'+Content.text.length+'em')
-        }
-        else if(Content.align=="l"){
-            textContent.attr('x','0');
-            textContent.attr('dx',Content.text.length+'em')
-        }
-    }
+            if(spPr.textAnchor=='b'){
+                textContent.attr('y', '100%').attr('dy', '-1em');;
+            }else if(spPr.textAnchor=='t'){
+                // textContent.attr('y', '0').attr('dy', '1em');;
+            }
+            if (Content.align=="none") {
+                if(spPr.defaultAlign=="r"){
+                    textContent.attr('x','100%');
+                    textContent.attr('dx','-'+Content.text.length+'em')
+                }
+                else if(spPr.defaultAlign=="l"){
+                    textContent.attr('x','0').attr('text-anchor','start');
+                    // textContent.attr('dx',Content.text.length+'em')
+                }
+            }else{
+                if(Content.align=="r"){
+                    textContent.attr('x','100%');
+                    textContent.attr('dx','-'+Content.text.length+'em')
+                }
+                else if(Content.align=="l"){
+                     textContent.attr('x','0').attr('text-anchor','start');
+                                         // textContent.attr('dx',Content.text.length+'em')
+                }
+            }
 
-    if (spPr.buchar) {
-        Content.text=spPr.buchar+Content.text;
+            if (spPr.buchar) {
+                Content.text=spPr.buchar+Content.text;
+            };
+            textContent.text(Content.text);
     };
-    textContent.text(Content.text);
+    
 }
 PPTRender.prototype.checkProgress=function checkProgress(){
    
@@ -90,16 +95,20 @@ PPTRender.prototype.realRender=function realRender(){
     // this.pptModel.sldMasterLst.forEach(function(item){
         // _this.drawRect(item.spPrModel.x/RATE,item.spPrModel.y/RATE,item.spPrModel.width/RATE,item.spPrModel.height/RATE);
     // });
-    var textContent=this.pptModel.sldContents[page];
+    var sldContent=this.pptModel.sldContents[page];
     var spprs=this.pptModel.sldLayoutLst[page];
     if(spprs.spPrModels.length==0){
         spprs=this.pptModel.sldMasterLst[0];
     }
-    for (var i = textContent.length - 1; i >= 0; i--) {
+
+     for (var j = 0; j <sldContent.textbodys.length; j++) {
+
+        _this.drawTextAtRect(sldContent.textbodys[j],spprs.spPrModels[j],rate);
+
+     }
            // _this.drawTextAtRect(textContent[i],spprs.spPrModels[i],rate);
-           _this.drawTextAtRect(textContent[i],spprs.spPrModels[textContent.length-i-1],rate);
-    }
-     // for (var i = 0; i <textContent.length; i++) {
+           // _this.drawTextAtRect(textContent[i],spprs.spPrModels[textContent.length-i-1],rate);
+         // for (var i = 0; i <textContent.length; i++) {
            // _this.drawTextAtRect(textContent[i],spprs.spPrModels[i],rate);
            // _this.drawTextAtRect(textContent[i],this.pptModel.sldMasterLst[ textContent.length -i].spPrModel,RATE);
     // }
