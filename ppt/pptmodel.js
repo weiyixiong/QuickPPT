@@ -1,4 +1,3 @@
-//TODO 相对于多行的情况 P标签提取会导致分割的情况,所以改为textbody为单位,目前改到addsldContent
 function spPrModel(x,y,width,height,textsize,txtAnchor,defaultAlign,buchar){
     this.x=x;
     this.y=y;
@@ -17,7 +16,6 @@ function textBody(pArray){
     this.para=pArray;
 }
 function sldLayoutModel(){
-    // this.spPrModel=spPrModel;
     this.spPrModels=new Array();
 }
 function sldContent(textbodys){
@@ -173,7 +171,7 @@ PPTModel.prototype.addMasterSp=function addSp(doc,sldLayoutArr,index){
 
 }
 
-PPTModel.prototype.addSldContent=function addSldContent(textbody){
+PPTModel.prototype.addSldContent=function addSldContent(textbody,index){
     var textbodys=new Array();
     for (var j = 0; j <textbody.length; j++) {
         var p=textbody.item(j).getElementsByTagName("p");
@@ -188,7 +186,7 @@ PPTModel.prototype.addSldContent=function addSldContent(textbody){
         }
         textbodys.push(array);       
     }
-     this.sldContents.push(new sldContent(textbodys));
+     this.sldContents[index]=new sldContent(textbodys);
 }
 PPTModel.prototype.getIndex=function getIndex(string){
     return string.match(/\d/g);
@@ -248,14 +246,12 @@ PPTModel.prototype.pushData=function pushData(entry){
     }
     else if(entry.filename.indexOf("ppt/slideLayouts/slideLayout")>=0){
         var index=this.getIndex(entry.filename)-1;
-        if(index<=2){
-            var _this=this;
-            this.parseXml(entry,function(doc){
-                var sp=doc.getElementsByTagName('sp');
-                _this.addSp(sp,_this.sldLayoutLst,index);
+        var _this=this;
+        this.parseXml(entry,function(doc){
+            var sp=doc.getElementsByTagName('sp');
+            _this.addSp(sp,_this.sldLayoutLst,index);
 
-            });
-        }
+        });
     }
     else if(entry.filename.indexOf("ppt/slideLayouts/_rels")>=0){
          this.parseXml(entry);
@@ -266,7 +262,7 @@ PPTModel.prototype.pushData=function pushData(entry){
         this.parseXml(entry,function(doc){
             var text=doc.getElementsByTagName("txBody");
             var phType=doc.getElementsByTagName("ph");
-            _this.addSldContent(text);
+            _this.addSldContent(text,index);
             
         });
     }

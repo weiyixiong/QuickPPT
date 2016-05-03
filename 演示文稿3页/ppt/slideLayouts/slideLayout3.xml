@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:sldLayout preserve="1" type="secHead" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+	<p:cSld name="节标题">
+		<p:spTree>
+			<p:nvGrpSpPr>
+				<p:cNvPr id="1" name=""/>
+				<p:cNvGrpSpPr/>
+				<p:nvPr/>
+			</p:nvGrpSpPr>
+			<p:grpSpPr>
+				<a:xfrm>
+					<a:off x="0" y="0"/>
+					<a:ext cx="0" cy="0"/>
+					<a:chOff x="0" y="0"/>
+					<a:chExt cx="0" cy="0"/>
+				</a:xfrm>
+			</p:grpSpPr>
+			<p:sp>
+				<p:nvSpPr>
+					<p:cNvPr id="2" name="标题 1"/>
+					<p:cNvSpPr>
+						<a:spLocks noGrp="1"/>
+					</p:cNvSpPr>
+					<p:nvPr>
+						<p:ph type="title"/>
+					</p:nvPr>
+				</p:nvSpPr>
+				<p:spPr>
+					<a:xfrm>
+						<a:off x="831850" y="1709738"/>
+						<a:ext cx="10515600" cy="2852737"/>
+					</a:xfrm>
+				</p:spPr>
+				<p:txBody>
+					<a:bodyPr anchor="b"/>
+					<a:lstStyle>
+						<a:lvl1pPr>
+							<a:defRPr sz="6000"/>
+						</a:lvl1pPr>
+					</a:lstStyle>
+					<a:p>
+						<a:r>
+							<a:rPr altLang="en-US" kumimoji="1" lang="zh-CN" smtClean="0"/>
+							<a:t>单击此处编辑母版标题样式</a:t>
+						</a:r>
+						<a:endParaRPr altLang="en-US" kumimoji="1" lang="zh-CN"/>
+					</a:p>
+				</p:txBody>
+			</p:sp>
+			<p:sp>
+				<p:nvSpPr>
+					<p:cNvPr id="3" name="文本占位符 2"/>
+					<p:cNvSpPr>
+						<a:spLocks noGrp="1"/>
+					</p:cNvSpPr>
+					<p:nvPr>
+						<p:ph idx="1" type="body"/>
+					</p:nvPr>
+				</p:nvSpPr>
+				<p:spPr>
+					<a:xfrm>
+						<a:off x="831850" y="4589463"/>
+						<a:ext cx="10515600" cy="1500187"/>
+					</a:xfrm>
+				</p:spPr>
+				<p:txBody>
+					<a:bodyPr/>
+					<a:lstStyle>
+						<a:lvl1pPr indent="0" marL="0">
+							<a:buNone/>
+							<a:defRPr sz="2400">
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl1pPr>
+						<a:lvl2pPr indent="0" marL="457200">
+							<a:buNone/>
+							<a:defRPr sz="2000">
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl2pPr>
+						<a:lvl3pPr indent="0" marL="914400">
+							<a:buNone/>
+							<a:defRPr sz="1800">
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl3pPr>
+						<a:lvl4pPr indent="0" marL="1371600">
+							<a:buNone/>
+							<a:defRPr sz="1600">
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl4pPr>
+						<a:lvl5pPr indent="0" marL="1828800">
+							<a:buNone/>
+							<a:defRPr sz="1600">
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl5pPr>
+						<a:lvl6pPr indent="0" marL="2286000">
+							<a:buNone/>
+							<a:defRPr sz="1600">
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl6pPr>
+						<a:lvl7pPr indent="0" marL="2743200">
+							<a:buNone/>
+							<a:defRPr sz="1600">
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl7pPr>
+						<a:lvl8pPr indent="0" marL="3200400">
+							<a:buNone/>
+							<a:defRPr sz="1600">
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl8pPr>
+						<a:lvl9pPr indent="0" marL="3657600">
+							<a:buNone/>
+							<a:defRPr sz="1600">
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:tint val="75000"/>
+									</a:schemeClr>
+								</a:solidFill>
+							</a:defRPr>
+						</a:lvl9pPr>
+					</a:lstStyle>
+					<a:p>
+						<a:pPr lvl="0"/>
+						<a:r>
+							<a:rPr altLang="en-US" kumimoji="1" lang="zh-CN" smtClean="0"/>
+							<a:t>单击此处编辑母版文本样式</a:t>
+						</a:r>
+					</a:p>
+				</p:txBody>
+			</p:sp>
+			<p:sp>
+				<p:nvSpPr>
+					<p:cNvPr id="4" name="日期占位符 3"/>
+					<p:cNvSpPr>
+						<a:spLocks noGrp="1"/>
+					</p:cNvSpPr>
+					<p:nvPr>
+						<p:ph idx="10" sz="half" type="dt"/>
+					</p:nvPr>
+				</p:nvSpPr>
+				<p:spPr/>
+				<p:txBody>
+					<a:bodyPr/>
+					<a:lstStyle/>
+					<a:p>
+						<a:fld id="{3061FC46-4A4A-054B-8F30-7B28FA2F0C74}" type="datetimeFigureOut">
+							<a:rPr altLang="en-US" kumimoji="1" lang="zh-CN" smtClean="0"/>
+							<a:t>16/5/3</a:t>
+						</a:fld>
+						<a:endParaRPr altLang="en-US" kumimoji="1" lang="zh-CN"/>
+					</a:p>
+				</p:txBody>
+			</p:sp>
+			<p:sp>
+				<p:nvSpPr>
+					<p:cNvPr id="5" name="页脚占位符 4"/>
+					<p:cNvSpPr>
+						<a:spLocks noGrp="1"/>
+					</p:cNvSpPr>
+					<p:nvPr>
+						<p:ph idx="11" sz="quarter" type="ftr"/>
+					</p:nvPr>
+				</p:nvSpPr>
+				<p:spPr/>
+				<p:txBody>
+					<a:bodyPr/>
+					<a:lstStyle/>
+					<a:p>
+						<a:endParaRPr altLang="en-US" kumimoji="1" lang="zh-CN"/>
+					</a:p>
+				</p:txBody>
+			</p:sp>
+			<p:sp>
+				<p:nvSpPr>
+					<p:cNvPr id="6" name="幻灯片编号占位符 5"/>
+					<p:cNvSpPr>
+						<a:spLocks noGrp="1"/>
+					</p:cNvSpPr>
+					<p:nvPr>
+						<p:ph idx="12" sz="quarter" type="sldNum"/>
+					</p:nvPr>
+				</p:nvSpPr>
+				<p:spPr/>
+				<p:txBody>
+					<a:bodyPr/>
+					<a:lstStyle/>
+					<a:p>
+						<a:fld id="{4C205595-485C-614B-BCE7-DB636074DA3C}" type="slidenum">
+							<a:rPr altLang="en-US" kumimoji="1" lang="zh-CN" smtClean="0"/>
+							<a:t>‹#›</a:t>
+						</a:fld>
+						<a:endParaRPr altLang="en-US" kumimoji="1" lang="zh-CN"/>
+					</a:p>
+				</p:txBody>
+			</p:sp>
+		</p:spTree>
+		<p:extLst>
+			<p:ext uri="{BB962C8B-B14F-4D97-AF65-F5344CB8AC3E}">
+				<p14:creationId val="1288051857" xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main"/>
+			</p:ext>
+		</p:extLst>
+	</p:cSld>
+	<p:clrMapOvr>
+		<a:masterClrMapping/>
+	</p:clrMapOvr>
+</p:sldLayout>
