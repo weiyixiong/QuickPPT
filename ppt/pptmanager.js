@@ -85,7 +85,29 @@
         function showNode(entry,li,a){
 
               d3.select("svg").remove();
-              entry.getData(new zip.TextWriter(), function(text) {
+
+              if(entry.filename.indexOf(".jpeg")>=0){
+
+                     entry.getData(new zip.Data64URIWriter(), function(uri) {
+                                 var imgtemp = new Image();
+                                  imgtemp.src = uri;
+                                  imgtemp.name=entry.filename;
+                                  
+                                   // imgtemp. = uri;
+                                    //     imgtemp.src = uri;
+                                    // if (isMask) {
+                                    //     imgtemp = new Image();
+                                    //     imgtemp.src = uri;
+                                    // }
+                                    // else {
+                                    //     var lol = new Image();
+                                    //     lol.src = uri;
+                                    //     imageLibrary.push(lol);
+                                    // }
+                                });
+
+              }else{
+                        entry.getData(new zip.TextWriter(), function(text) {
                         if(text.indexOf("Mac OS X") >= 0||entry.filename.indexOf(".jpeg")>=0){
                             return;
                         }
@@ -109,6 +131,11 @@
                     }, function(current, total) {
                         // onprogress callback
                     });
+
+
+              }
+              
+
         }
 
         if (typeof requestFileSystem == "undefined")

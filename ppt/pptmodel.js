@@ -8,9 +8,11 @@ function spPrModel(x,y,width,height,textsize,txtAnchor,defaultAlign,buchar){
     this.defaultAlign=defaultAlign;
     this.buchar=buchar;
 }
-function textP(align,text){
+function textP(align,text,hasBuChar,textColor){
     this.align=align;
     this.text=text;
+    this.hasBuChar=hasBuChar;
+    this.textColor=textColor;
 }
 function textBody(pArray){
     this.para=pArray;
@@ -36,10 +38,12 @@ function PPTModel(){
     this.sldMasterLst=new Array();
     this.sldLayoutLst=new Map();
     this.sldContents=new Array();
+    this.sldContentLayoutMap=new Array();
     this.sldContentDec=new Array();
     this.sldszX=0;
     this.sldszY=0;
     this.sizeRate=6350;
+    this.imageResoures=new Map();
 
 
     this.parser = new DOMParser({
@@ -68,6 +72,19 @@ PPTModel.prototype.parseXml=function parseXml(entry,callback){
         entry.getData(new zip.TextWriter(), function(text) {
                         doc = parser.parseFromString(text,'text/xml');
                         callback(doc);
+                    }, function(current, total) {
+                        // onprogress callback
+                    });
+}
+PPTModel.prototype.parseImage=function parseImage(entry){
+        var parser=this.parser;
+        var _this=this;
+        entry.getData(new zip.Data64URIWriter(), function(uri) {
+                       var imgtemp = new Image();
+                       imgtemp.src = uri;
+                       imgtemp.name=entry.filename;
+                       _this.imageResoures.put(entry.filename,imgtemp);
+
                     }, function(current, total) {
                         // onprogress callback
                     });
@@ -177,11 +194,16 @@ PPTModel.prototype.addSldContent=function addSldContent(textbody,index){
         var p=textbody.item(j).getElementsByTagName("p");
         var array=new Array();
         for (var i = 0; i < p.length; i++) {
+            var hasBuChar=p.item(i).getElementsByTagName("buNone").length == 0;
             var alignEles=p.item(i).getElementsByTagName("pPr");
+            var textColor="black";
+            if (p.item(i).getElementsByTagName("srgbClr").length>0) {
+                textColor="#"+p.item(i).getElementsByTagName("srgbClr").item(0).getAttribute("val");
+            }
             if (alignEles.length!=0) {
-                array.push(new textP(alignEles.item(0).getAttribute('algn'),p.item(i).textContent));
+                array.push(new textP(alignEles.item(0).getAttribute('algn'),p.item(i).textContent,hasBuChar,textColor));
             }else{
-                array.push(new textP('none',p.item(i).textContent));
+                array.push(new textP('none',p.item(i).textContent,hasBuChar,textColor));
             }
         }
         textbodys.push(array);       
@@ -255,6 +277,15 @@ PPTModel.prototype.pushData=function pushData(entry){
     }
     else if(entry.filename.indexOf("ppt/slideLayouts/_rels")>=0){
          this.parseXml(entry);
+    } 
+    else if(entry.filename.indexOf("ppt/slides/_rels")>=0){
+        var _this=this;
+        var index=this.getIndex(entry.filename)-1;
+        this.parseXml(entry,function(doc){
+            var layoutText=doc.getElementsByTagName("Relationship").item(0).getAttribute("Target");
+            _this.sldContentLayoutMap[index]=_this.getIndex(layoutText)-1;
+            
+        });
     }
     else if(entry.filename.indexOf("ppt/slides/slide")>=0){
         var _this=this;
@@ -271,7 +302,10 @@ PPTModel.prototype.pushData=function pushData(entry){
     }
     else if(entry.filename.indexOf("ppt/theme/theme.xml")>=0){
          this.parseXml(entry);
-    } else{
+    } 
+    else if(entry.filename.indexOf("jpg")>=0||entry.filename.indexOf("jpeg")>=0||entry.filename.indexOf("png")>=0){
+         this.parseImage(entry);
+    }else{
         console.log(entry.filename+"   pushData() 未匹配到任何关键字");
     }  
 

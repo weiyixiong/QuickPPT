@@ -22,6 +22,9 @@ function PPTRender(pptModel){
 
 
 }
+PPTRender.prototype.getChineseTextCount=function getChineseTextCount(string){
+    return string.match(/[\u4E00-\u9FA5]|[\uFE30-\uFFA0]/g);
+}
 PPTRender.prototype.drawRect= function drawRect(x,y,width,height,color){
     color=color||"fill:blue";
     this.baseSvg.append('rect').attr('x',x).attr('y', y).attr('width',width).attr('height',height).attr('style',color);
@@ -34,6 +37,7 @@ PPTRender.prototype.drawTextAtRect= function drawTextAtRect(textbodys,spPr,rate)
     .attr('y', spPr.y/rate.widthRate)
     .attr('width',spPr.width/rate.heightRate)
     .attr('height',spPr.height/rate.widthRate);//.attr('style',color);
+    var _this=this;
 
     for (var i = 0; i < textbodys.length; i++) {
          var Content=textbodys[i];
@@ -43,7 +47,7 @@ PPTRender.prototype.drawTextAtRect= function drawTextAtRect(textbodys,spPr,rate)
             .attr('dx','0')
             .attr('dy','.3em')
             .attr('text-anchor','middle')
-            .attr('fill','black')
+            .attr('fill',Content.textColor)
             .attr('font-size',spPr.textsize/100+'px');
 
             if(spPr.textAnchor=='b'){
@@ -51,7 +55,7 @@ PPTRender.prototype.drawTextAtRect= function drawTextAtRect(textbodys,spPr,rate)
             }else if(spPr.textAnchor=='t'){
                 // textContent.attr('y', '0').attr('dy', '1em');;
             }
-            if (Content.align=="none") {
+            if (Content.align=="none"||Content.align==null) {
                 if(spPr.defaultAlign=="r"){
                     textContent.attr('x','100%');
                     textContent.attr('dx','-'+Content.text.length+'em')
@@ -70,12 +74,46 @@ PPTRender.prototype.drawTextAtRect= function drawTextAtRect(textbodys,spPr,rate)
                                          // textContent.attr('dx',Content.text.length+'em')
                 }
             }
-
-            if (spPr.buchar) {
+            if (spPr.buchar&&Content.hasBuChar) {
                textContent.text(spPr.buchar+Content.text);
             }else{
-               textContent.text(Content.text);
-            }
+                   var lineTextNum=new Array();
+                   var useWidth=0;
+                   var lineTextNumItem=0;
+                   var canUseWidth=spPr.width/rate.heightRate;
+                   var line=0;
+                   for (var j = 0; j < Content.text.length; j++) {
+                       if(_this.getChineseTextCount(Content.text[j])!=null){
+                          useWidth+=spPr.textsize/100;
+                       }else{
+                          useWidth+=spPr.textsize/200;
+                       }
+                       lineTextNumItem++;
+                       if(useWidth>canUseWidth){
+                          j--;
+                          lineTextNum[line++]=lineTextNumItem-1;
+                          lineTextNumItem=0;
+                          useWidth=0;
+                       }
+
+                   };
+                   lineTextNum[line]=lineTextNumItem;
+                   var textEndIndex=0;
+                   var textStartIndex=0;
+                   for (var k = 0; k < lineTextNum.length; k++) {
+                        textEndIndex+=lineTextNum[k];
+                        var tSpan=textContent.append('tspan').attr("dy", k ? "1.2em" : 0)
+                        .attr('x', textContent.attr('x'))
+                        .attr('fill', textContent.attr('fill'));
+                        tSpan.text(Content.text.substring(textStartIndex,textEndIndex));
+                        textStartIndex=textEndIndex;
+                   };
+               }
+               // else{
+               //    textContent.text(Content.text);
+               // }
+               
+            // }
          
     };
     
@@ -100,8 +138,9 @@ PPTRender.prototype.readerPage=function readerPage(page){
     // this.pptModel.sldMasterLst.forEach(function(item){
         // _this.drawRect(item.spPrModel.x/RATE,item.spPrModel.y/RATE,item.spPrModel.width/RATE,item.spPrModel.height/RATE);
     // });
+    var contentLayoutMap=this.pptModel.sldContentLayoutMap;
     var sldContent=this.pptModel.sldContents[page];
-    var spprs=this.pptModel.sldLayoutLst[page];
+    var spprs=this.pptModel.sldLayoutLst[contentLayoutMap[page]];
     if(spprs.spPrModels.length==0){
         spprs=this.pptModel.sldMasterLst[0];
     }
