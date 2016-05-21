@@ -29,6 +29,17 @@ PPTRender.prototype.drawRect= function drawRect(x,y,width,height,color){
     color=color||"fill:blue";
     this.baseSvg.append('rect').attr('x',x).attr('y', y).attr('width',width).attr('height',height).attr('style',color);
 }
+PPTRender.prototype.drawImageAtRect= function drawImageAtRect(images,rate,imageMap){
+  for (var i = 0; i < images.length; i++) {
+        var image=this.baseSvg.append('image')
+                      .attr('x',images[i].x/rate.heightRate)
+                    .attr('y', images[i].y/rate.widthRate)
+                    .attr('width',images[i].width/rate.heightRate)
+                    .attr('height',images[i].height/rate.widthRate)
+                    .attr('xlink:href', this.pptModel.imageResoures.get(imageMap.get(images[i].embed)).src);
+  };
+
+}
 PPTRender.prototype.drawTextAtRect= function drawTextAtRect(textbodys,spPr,rate){
 
     var color="fill:blue";
@@ -141,12 +152,19 @@ PPTRender.prototype.readerPage=function readerPage(page){
     var contentLayoutMap=this.pptModel.sldContentLayoutMap;
     var sldContent=this.pptModel.sldContents[page];
     var spprs=this.pptModel.sldLayoutLst[contentLayoutMap[page]];
+
+    var images=this.pptModel.sldContentsImg[page];
+
     if(spprs.spPrModels.length==0){
         spprs=this.pptModel.sldMasterLst[0];
     }
 
      for (var j = 0; j <sldContent.textbodys.length; j++) {
         _this.drawTextAtRect(sldContent.textbodys[j],spprs.spPrModels[j],rate);
+     }  
+
+    for (var i = 0; i <images.textbodys.length; i++) {
+        _this.drawImageAtRect(images.textbodys,rate,this.pptModel.sldContentImgMap);
      }  
  }
 
